@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Col, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 const zodiacSigns = [
   { sign: 'aries', period: 'March 21 - April 19' },
@@ -18,6 +19,7 @@ const zodiacSigns = [
 ];
 
 function ZodiacGrid() {
+  const { t } = useTranslation();
   return (
     <div className="container">
       <Row>
@@ -25,7 +27,7 @@ function ZodiacGrid() {
           <Col md={4} sm={6} key={sign}>
             <Card className="zodiac-card" as={Link} to={`/detail/${sign}`}>
               <Card.Body>
-                <Card.Title>{sign.charAt(0).toUpperCase() + sign.slice(1)}</Card.Title>
+              <Card.Title>{t(`zodiac.${sign}`)}</Card.Title>
                 <Card.Text>{period}</Card.Text>
               </Card.Body>
             </Card>
